@@ -1,0 +1,10 @@
+sent_emails/
+*.pyc
+__pycache__
+__pycache__/*
+CMB/__pycache__
+restaurants/__pycache__
+users/__pycache__ 
+db.sqlite3
+media
+
