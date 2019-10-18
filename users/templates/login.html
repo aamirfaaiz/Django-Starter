@@ -4,12 +4,12 @@
 
 {%block body%}
 
-<header class="masthead">
-	<div class="container card mx-auto my-auto">
+<header>
+	<div >
 		<form method="POST">
 			{% csrf_token %}
 			{{form|crispy}}
-			<button class="btn btn-outline-info" type="submit">Login</button>
+			<button type="submit">Login</button>
 		</form>
 		<a href="/password_reset"><strong>Forgot Password</strong></a>
 		Don't have an account? <a href="/register" ><strong>register here</strong></a>

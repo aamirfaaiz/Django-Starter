@@ -17,8 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from main import urls as main_urls
 from users import urls as user_urls
+from users import views as user_views
 urlpatterns = [
+    path('', include(user_urls)),
     path('admin/', admin.site.urls),
     path('', include(main_urls)),
-    path('', include(user_urls)),
+    path('', include('django.contrib.auth.urls')),
+    path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+         user_views.activate_account, name='activate'),
 ]

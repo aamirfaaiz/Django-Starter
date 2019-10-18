@@ -11,6 +11,16 @@ from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.http import HttpResponse
 from .models import User
+from rest_framework import generics
+from . import serializers
+
+
+
+class UserListView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = serializers.UserSerializer
+
+
 
 def register(request):
     if request.method == 'POST':
@@ -81,13 +91,3 @@ def login_request(request):
                       context={"form": form})
     return redirect('/')  # redirect home
 
-
-# def account_detail(request):
-#     # user authentication check!
-#     if request.user.is_authenticated:
-# #         return render(request, "account.html", context={})
-#     return redirect('/')  # else redirect home
-#
-# class UserListView(generics.ListAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = serializers.UserSerializer
